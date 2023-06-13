@@ -1,0 +1,15 @@
+{
+  "name": "logo_nebula",
+  "version": "1.0.0",
+  "description": "\"LogoNebula: The Future of SVG Designs\"",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}

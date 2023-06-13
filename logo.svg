@@ -1,0 +1,5 @@
+
+      <svg xmlns="http://www.w3.org/2000/svg" width="300" height="200" fill="green">
+        <circle cx="150" cy="100" r="50"/>
+        <text x="150" y="105" text-anchor="middle" fill="white" font-size="30px" font-family="Verdana">LGN</text>
+      </svg>
