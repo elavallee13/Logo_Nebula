@@ -2,63 +2,80 @@ const fs = require('fs');
 const readline = require('readline');
 
 const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout,
-  });
-  
-  const questions = [
-    'Enter up to three characters for the logo text: ',
-    'Enter the text color (keyword or hexadecimal): ',
-    'Enter a shape (circle, triangle, square): ',
-    'Enter the shape color (keyword or hexadecimal): ',
-  ];
-  
-  let answers = [];
-  
-  const askQuestions = (i = 0) => {
-    rl.question(questions[i], (answer) => {
-      answers.push(answer);
-      if (i === questions.length - 1) {
-        rl.close();
-        generateLogo();
-      } else {
-        askQuestions(i + 1);
-      }
-    });
-  };
-  
-  askQuestions();
-  
-  const generateLogo = () => {
-    const [text, textColor, shape, shapeColor] = answers;
-  
-    // This part of code will change based on the shape entered by the user.
-    let svg;
-  
-    // Generate the SVG for each possible shape
-    if (shape === 'circle') {
-      svg = `
-      <svg xmlns="http://www.w3.org/2000/svg" width="300" height="200" fill="${shapeColor}">
-        <circle cx="150" cy="100" r="50"/>
-        <text x="150" y="105" text-anchor="middle" fill="${textColor}" font-size="30px" font-family="Verdana">${text}</text>
+  input: process.stdin,
+  output: process.stdout,
+});
+
+const questions = [
+  'Enter up to three characters for the logo text: ',
+  'Enter the text color (keyword or hexadecimal): ',
+  'Enter a shape (circle, triangle, square): ',
+  'Enter the background color (keyword or hexadecimal): ',
+  'Select a font style:\n1. Arial\n2. Times New Roman\n3. Montserrat\nEnter the number of your choice: ',
+];
+
+const fontStyles = [
+  'Arial',
+  'Times New Roman',
+  'Montserrat',
+];
+
+const generateLogo = (text, textColor, shape, backgroundColor, fontStyle) => {
+  let svg;
+
+  switch (shape) {
+    case 'circle':
+      svg = `<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200">
+        <circle cx="100" cy="100" r="80" fill="${backgroundColor}"/>
+        <text x="100" y="120" fill="${textColor}" text-anchor="middle" font-size="40" font-family="${fontStyles[fontStyle - 1]}">${text}</text>
       </svg>`;
-    } else if (shape === 'square') {
-      svg = `
-      <svg xmlns="http://www.w3.org/2000/svg" width="300" height="200" fill="${shapeColor}">
-        <rect width="100" height="100" x="100" y="50"/>
-        <text x="150" y="105" text-anchor="middle" fill="${textColor}" font-size="30px" font-family="Verdana">${text}</text>
+      break;
+    case 'triangle':
+      svg = `<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200">
+        <polygon points="100,20 180,180 20,180" fill="${backgroundColor}"/>
+        <text x="100" y="120" fill="${textColor}" text-anchor="middle" font-size="40" font-family="${fontStyles[fontStyle - 1]}">${text}</text>
       </svg>`;
-    } else if (shape === 'triangle') {
-      svg = `
-      <svg xmlns="http://www.w3.org/2000/svg" width="300" height="200" fill="${shapeColor}">
-        <polygon points="150,25 275,175 25,175"/>
-        <text x="150" y="105" text-anchor="middle" fill="${textColor}" font-size="30px" font-family="Verdana">${text}</text>
+      break;
+    case 'square':
+      svg = `<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200">
+        <rect x="20" y="20" width="160" height="160" fill="${backgroundColor}"/>
+        <text x="100" y="120" fill="${textColor}" text-anchor="middle" font-size="40" font-family="${fontStyles[fontStyle - 1]}">${text}</text>
       </svg>`;
+      break;
+    default:
+      console.log('Invalid shape entered.');
+      rl.close();
+      return;
+  }
+
+  const fileName = 'logo.svg';
+
+  fs.writeFile(fileName, svg, (err) => {
+    if (err) {
+      console.log('An error occurred while generating the logo.');
+      console.error(err);
+    } else {
+      console.log(`Generated ${fileName}`);
     }
-  
-    fs.writeFile('logo.svg', svg, (err) => {
-      if (err) throw err;
-      console.log('Generated logo.svg');
-    });
-  };
-  
+    rl.close();
+  });
+};
+
+const getUserInput = (questions, answers = []) => {
+  const currentQuestion = questions[0];
+
+  rl.question(currentQuestion, (answer) => {
+    const trimmedAnswer = answer.trim();
+    answers.push(trimmedAnswer);
+
+    if (questions.length === 1) {
+      const [text, textColor, shape, backgroundColor, fontStyle] = answers;
+      generateLogo(text, textColor, shape, backgroundColor, fontStyle);
+    } else {
+      const remainingQuestions = questions.slice(1);
+      getUserInput(remainingQuestions, answers);
+    }
+  });
+};
+
+getUserInput(questions);
