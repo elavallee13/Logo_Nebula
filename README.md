@@ -66,6 +66,5 @@ To test this project I used the command in terminal - node index.js
 This test proved to ask the required questions for a professional readme file that automatically creates said file ready for publishing.
 
 ## Where to find
-GitHub REPO - 
-Deployment - 
-Realeased - 
+GitHub REPO - https://github.com/elavallee13/Logo_Nebula
+Deployment link - 
