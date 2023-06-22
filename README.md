@@ -2,7 +2,7 @@
 "LogoNebula: The Future of SVG Designs"
 
 
-Our task is to build a Node.js command-line application that takes in user input to generate a logo and save it as an SVG fileLinks to an external site.. The application prompts the user to select a color and shape, provide text for the logo, and save the generated SVG to a .svg file.
+Our task is to build a Node.js command-line application that takes in user input to generate a logo and save it as an SVG fileLinks to an external site. The application prompts the user to select a color and shape, provide text for the logo, and save the generated SVG to a .svg file.
 
 # Logo_Nebula
 Module 9 Challenge - Node.js Challenge: Professional README Generator
@@ -28,8 +28,8 @@ My motivation for this project is to create an application that creates an SVG f
 
 # Why did you build this project?
 
- I built this project to assist creators with an essencial part of the project process. 
- Having a custom logo to repersent the users project not only allows the creator to display the brand and creator of the application but also allows the user to easily create an logo in SVG format.
+ I built this project to assist creators with an essential part of the project process. 
+ Having a custom logo to represent the user's project not only allows the creator to display the brand and creator of the application but also allows the user to easily create a logo in SVG format.
 
 # What problem did you solve?
 
@@ -41,11 +41,11 @@ What I learned in this application is how to effectively use node.js to create a
 
 ## Usage 
 
-Terminal - node logo-generator.js - The user is promted to answer a few questions for how they want their logo to appear. These questions include font size and color, logo shape and background color and a three character entry for the title.
+Terminal - node logo-generator.js - The user is prompted to answer a few questions about how they want their logo to appear. These questions include font size and color, logo shape and background color, and a three-character entry for the title.
 
 ## Credits
 
-I owe the credits of this projects to the instructors of this course, my peers, and learning material found on 
+I owe the credits of this project to the instructors of this course, my peers, and the learning material found on 
 
 ## License
 
@@ -58,7 +58,7 @@ The features I created with this project allow the user to be prompted with prof
 
 ## How to Contribute
 
-I contribute the help for this project to my professors and TA’s that assist us with the needed information to help us complete assignments.
+I contribute help for this project to my professors and TAs that assist us with the needed information to help us complete assignments.
 
 ## Tests
 
@@ -67,4 +67,7 @@ This test proved to ask the required questions for a professional readme file th
 
 ## Where to find
 GitHub REPO - https://github.com/elavallee13/Logo_Nebula
+
 Deployment link - 
+
+Video Walkthrough - [Logo Nebula Video Walk through.webm](https://github.com/elavallee13/Logo_Nebula/assets/126723001/505efdb6-661d-431a-85af-7d13d4fbd342)
